@@ -7,7 +7,7 @@
 <body>
 <h1>Edit Order</h1>
 
-<form th:action="@{/orders-list}" th:object="${order}" method="post">
+<form th:action="@{/orders/edit}" th:object="${order}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <input th:type="hidden" name="placedAt" th:field="*{placedAt}">
     <table class="table table-bordered table-striped">
@@ -27,18 +27,12 @@
             <td>City:</td>
             <td><input type="text" th:field="*{city}"/></td>
         </tr>
-        <tr>
-            <td>Street:</td>
-            <td><input type="text" th:field="*{street}"/></td>
-        </tr>
+        
         <tr>
             <td>Zip code:</td>
             <td><input type="text" th:field="*{zip}"/></td>
         </tr>
-        <tr>
-            <td>Street:</td>
-            <td><input type="text" th:field="*{street}"/></td>
-        </tr>
+       
         <tr>
             <td>CC Number:</td>
             <td><input type="text" th:field="*{ccNumber}"/></td>
@@ -53,7 +47,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <button><a href="/orders/orders-list">Cancel</a></button>
+                <button><a href="/orders-list">Cancel</a></button>
                 <input type="submit" value="Update order">
             </td>
         </tr>
