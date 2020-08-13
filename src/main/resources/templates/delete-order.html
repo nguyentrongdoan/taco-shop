@@ -9,7 +9,7 @@
 <h2>Are you sure delete this order?</h2>
 <p>
 </p>
-<form th:action="@{/delete-order}" th:object="${order}" method="post">
+<form th:action="@{/orders/delete}" th:object="${order}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <div>
         <table class="table table-bordered table-striped">
@@ -55,7 +55,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button><a href="/orders/orders-list">Cancel</a></button>
+                    <button><a href="/orders-list">Cancel</a></button>
                     <input type="submit" value="Delete order">
                 </td>
             </tr>
