@@ -31,9 +31,9 @@ public class OrderController {
         orders.setPlacedAt(now);
         ordersService.save(orders);
         model.addAttribute(orders);
-        return "redirect:orders/orders-list";
+        return "redirect:/orders-list";
     }
-    @GetMapping("/orders/orders-list")
+    @GetMapping("/orders-list")
     public ModelAndView showOrderList(){
         List<Orders> orders = ordersService.findAll();
         ModelAndView modelAndView = new ModelAndView("result");
@@ -67,7 +67,7 @@ public class OrderController {
     @PostMapping("/orders/delete")
     public String deleteNote(@ModelAttribute("order") Orders orders) {
         ordersService.remove(orders.getId());
-        return "redirect:orders/orders-list";
+        return "redirect:/orders-list";
     }
 
 }
