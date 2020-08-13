@@ -14,19 +14,18 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/orders")
 public class OrderController {
 
     @Autowired
     private OrdersService ordersService;
 
-    @GetMapping("/current")
+    @GetMapping("/orders/current")
     public String showOrderForm(Model model) {
         model.addAttribute("orders", new Orders());
         return "orderForm";
     }
 
-    @PostMapping
+    @PostMapping("/orders")
     public String saveOrder(Orders orders, Model model) {
         LocalDateTime now = LocalDateTime.now();
         orders.setPlacedAt(now);
@@ -34,40 +33,38 @@ public class OrderController {
         model.addAttribute(orders);
         return "redirect:orders/orders-list";
     }
-    @GetMapping("/orders-list")
+    @GetMapping("/orders/orders-list")
     public ModelAndView showOrderList(){
         List<Orders> orders = ordersService.findAll();
         ModelAndView modelAndView = new ModelAndView("result");
         modelAndView.addObject("orders", orders);
         return modelAndView;
     }
-    @GetMapping("edit/{id}")
-    public ModelAndView showEditForm(@PathVariable Long id) {
+    @GetMapping("/orders/edit/{id}")
+    public ModelAndView showEditForm(@PathVariable("id")Long id) {
         Orders orders = ordersService.findById(id);
         ModelAndView modelAndView = new ModelAndView("edit-order");
         modelAndView.addObject("order", orders);
         return modelAndView;
     }
 
-    @PutMapping("/edit")
+    @PostMapping("/orders/edit")
     public ModelAndView editOrder(@ModelAttribute("order") Orders orders) {
         ordersService.save(orders);
         ModelAndView modelAndView = new ModelAndView("edit-order");
         modelAndView.addObject("order", orders);
-        modelAndView.addObject("message", "Edit was successful !");
         return modelAndView;
     }
 
-    @GetMapping("delete/{id}")
+    @GetMapping("/orders/delete/{id}")
     public ModelAndView showDeleteForm(@PathVariable Long id) {
         Orders orders = ordersService.findById(id);
         ModelAndView modelAndView = new ModelAndView("delete-order");
         modelAndView.addObject("order", orders);
         return modelAndView;
-
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/orders/delete")
     public String deleteNote(@ModelAttribute("order") Orders orders) {
         ordersService.remove(orders.getId());
         return "redirect:orders/orders-list";

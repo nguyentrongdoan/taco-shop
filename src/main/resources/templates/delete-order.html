@@ -1,30 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h1>Delete note</h1>
-<h2>Are you sure delete this note?</h2>
+<h1>Delete order</h1>
+<h2>Are you sure delete this order?</h2>
 <p>
 </p>
-<form th:action="@{/delete-note}" th:object="${note}" method="post">
+<form th:action="@{/delete-order}" th:object="${order}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <div>
-        <table class="table table-bordered table-striped" border="2">
+        <table class="table table-bordered table-striped">
             <tr>
-                <td>Title:</td>
-                <td th:text="${note.title}"></td>
+                <td>Name:</td>
+                <td th:text="*{name}"/></td>
             </tr>
             <tr>
-                <td>Type:</td>
-                <td th:text="${note.type.name}"></td>
+                <td>Street:</td>
+                <td th:text="*{street}"/></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td th:text="*{state}"/></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td th:text="*{city}"/></td>
+            </tr>
+            <tr>
+                <td>Street:</td>
+                <td th:text="*{street}"/></td>
+            </tr>
+            <tr>
+                <td>Zip code:</td>
+                <td th:text="*{zip}"/></td>
+            </tr>
+            <tr>
+                <td>Street:</td>
+                <td th:text="*{street}"/></td>
+            </tr>
+            <tr>
+                <td>CC Number:</td>
+                <td th:text="*{ccNumber}"/></td>
+            </tr>
+            <tr>
+                <td>CC Expiration:</td>
+                <td th:text="*{ccExpiration}"/></td>
+            </tr>
+            <tr>
+                <td>CC CVV:</td>
+                <td th:text="*{ccCVV}"/></td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <button><a href="/notes">No</a></button>
-                    <input type="submit" value="Yes">
+                    <button><a href="/orders/orders-list">Cancel</a></button>
+                    <input type="submit" value="Delete order">
                 </td>
             </tr>
         </table>

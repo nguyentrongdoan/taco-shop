@@ -6,13 +6,8 @@
 </head>
 <body>
 <h1>Edit Order</h1>
-<p>
-    <a href="/notes">Back to Order list</a>
-</p>
-<th:block th:if="${message}">
-    <p th:text="${message}"></p>
-</th:block>
-<form th:action="@{/edit-order}" th:object="${order}" method="post">
+
+<form th:action="@{/orders-list}" th:object="${order}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <input th:type="hidden" name="placedAt" th:field="*{placedAt}">
     <table class="table table-bordered table-striped">
@@ -54,11 +49,11 @@
         </tr>
         <tr>
             <td>CC CVV:</td>
-            <td><input type="text" th:field="*{street}"/></td>
+            <td><input type="text" th:field="*{ccCVV}"/></td>
         </tr>
         <tr>
             <td colspan="2">
-                <button><a href="/orders">Cancel</a></button>
+                <button><a href="/orders/orders-list">Cancel</a></button>
                 <input type="submit" value="Update order">
             </td>
         </tr>
