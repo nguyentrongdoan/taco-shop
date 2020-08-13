@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h1 class="mt-4">View Order List</h1>
+    <div class="container">
+        <div>
+            <table class="table table-bordered table-striped">
+                <div class="row">
+                </div>
+                <div class="card-body">
+                    <thead>
+                    <tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Street</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>CC Number</th>
+                        <th>CC Expiration</th>
+                        <th>CC CVV</th>
+                        <th>Placed At</th>
+                        <th colspan="2">Action</th>
+
+                    </tr>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="o : ${orders}">
+                        <tr>
+                            <td th:text="${o.name}"></td>
+                            <td th:text="${o.street}"></td>
+                            <td th:text="${o.city}"></td>
+                            <td th:text="${o.state}"></td>
+                            <td th:text="${o.zip}"></td>
+                            <td th:text="${o.ccNumber}"></td>
+                            <td th:text="${o.ccExpiration}"></td>
+                            <td th:text="${o.ccCVV}"></td>
+                            <td th:text="${o.placedAt}"></td>
+                            <td>
+                                <button>
+                                    <a th:href="@{/orders/edit/__${o.id}__ }">Edit</a>
+                                </button>
+                            </td>
+                            <td>
+                                <button>
+                                    <a th:href="@{/orders/delete/__${o.id}__ }">Delete</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

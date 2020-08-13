@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Edit Order</h1>
+<p>
+    <a href="/notes">Back to Order list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-order}" th:object="${order}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <input th:type="hidden" name="placedAt" th:field="*{placedAt}">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Street:</td>
+            <td><input type="text" th:field="*{street}"/></td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td><input type="text" th:field="*{state}"/></td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td><input type="text" th:field="*{city}"/></td>
+        </tr>
+        <tr>
+            <td>Street:</td>
+            <td><input type="text" th:field="*{street}"/></td>
+        </tr>
+        <tr>
+            <td>Zip code:</td>
+            <td><input type="text" th:field="*{zip}"/></td>
+        </tr>
+        <tr>
+            <td>Street:</td>
+            <td><input type="text" th:field="*{street}"/></td>
+        </tr>
+        <tr>
+            <td>CC Number:</td>
+            <td><input type="text" th:field="*{ccNumber}"/></td>
+        </tr>
+        <tr>
+            <td>CC Expiration:</td>
+            <td><input type="text" th:field="*{ccExpiration}"/></td>
+        </tr>
+        <tr>
+            <td>CC CVV:</td>
+            <td><input type="text" th:field="*{street}"/></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button><a href="/orders">Cancel</a></button>
+                <input type="submit" value="Update order">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Delete note</h1>
+<h2>Are you sure delete this note?</h2>
+<p>
+</p>
+<form th:action="@{/delete-note}" th:object="${note}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <div>
+        <table class="table table-bordered table-striped" border="2">
+            <tr>
+                <td>Title:</td>
+                <td th:text="${note.title}"></td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td th:text="${note.type.name}"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button><a href="/notes">No</a></button>
+                    <input type="submit" value="Yes">
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+</body>
+</html>
